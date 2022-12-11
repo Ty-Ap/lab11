@@ -3,18 +3,22 @@
 
 
 
+
+
 // GLOBALS
 let votingRounds = 25;
 let productArray = [];
 
+
 // DOMWINDOWS
 let imgContainer = document.getElementById('img-container');
+
 let imgOne = document.getElementById('img-one');
 let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
 
 let resultsBtn = document.getElementById('rslts-btn');
-let resultsList = document.getElementById('rslts-cont');
+// let resultsList = document.getElementById('rslts-cont');
 
 
 // CONSTRUCTOR FUNCT
@@ -28,6 +32,16 @@ function Product(name, imgExtension = 'jpg'){
 
 
 // UTILITIES/CHECKS
+
+
+
+
+
+
+
+
+
+
 function randomIndex(){
   return Math.floor(Math.random() * productArray.length);
 }
@@ -54,10 +68,9 @@ function renderImg(){
   productArray[imgThreeIndex].views++;
 }
 
+
 function handleClick(event){
   let imgClicked = event.target.title;
-
-  console.log(imgClicked);
 
   for(let i = 0; i < productArray.length; i++){
     if(imgClicked === productArray[i].name){
@@ -72,17 +85,7 @@ function handleClick(event){
   }
 }
 
-function handleShowResults(){
-  if(votingRounds === 0){
-    for(let i = 0; i < productArray.length; i++){
-      let liElem = document.createElement('li');
-      liElem.textContent = `${productArray[i].name} - views: ${productArray[i].views} & votes: ${productArray[i].votes}`;
-      resultsList.appendChild(liElem);
-    }
-    resultsBtn.removeEventListener('click', handleShowResults);
-  }
 
-}
 
 
 
@@ -109,7 +112,58 @@ let wineGlassProduct = new Product('wine-glass');
 
 productArray.push(bagProduct, bananaProduct, bathroomProduct, bootsProduct, breakfastProduct, bubblegumProduct, chairProduct, cthulhuProduct, dogDuckProduct, dragonProduct, penProduct, petSweepProduct, scissorsProduct, sharkProduct, sweepBabyProduct, tauntaunProduct, unicornProduct, waterCanProduct, wineGlassProduct);
 
+
+
+
+
+let canvasElem = document.getElementById('mychart');
+
+function renderChart() {
+  let productNames = [];
+  let productVotes = [];
+  let productViews = [];
+  for (let i = 0; i < productArray.length; i++) {
+    productNames.push(productArray[i].name);
+    productVotes.push(productArray[i].votes);
+    productViews.push(productArray[i].views);
+    let chartObj = {
+      type: 'bar',
+      data: {
+        labels: this.productNames,
+        datasets: [{
+          label: '# of Votes',
+          data: productVotes,
+          borderWidth: 1,
+          backgroundColor: 'pink'
+        },
+        {
+          label: '# of Views',
+          data: this.productViews,
+          borderWidth: 1,
+          backgroundColor: 'white'
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    };
+
+    new Chart(canvasElem, chartObj);
+  }
+}
+
+
 renderImg();
+
+function handleShowResults(){
+  if(votingRounds === 0){
+    renderChart();
+  }
+}
 
 imgContainer.addEventListener('click', handleClick);
 resultsBtn.addEventListener('click', handleShowResults);
