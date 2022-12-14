@@ -1,5 +1,5 @@
 body {
-  background-color: #212529;
+  background-color: rgb(49, 48, 48);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -8,14 +8,22 @@ body {
 
 
 img {
+  white-space: nowrap;
+  display: inline;
+  margin: 3px;
   height: 400px;
-  width: 400px;
+  width: 430px;
   border-style: solid;
   border-width: 4px;
   border-image:#D52D00;
 }
 
-#rslts-btn {
+div{
+  height: 800px;
+  width: 1350px;
+}
+
+/* #rslts-btn {
   width: max-content;
   font-family: sans-serif;
   padding: 10px;
@@ -26,18 +34,18 @@ img {
   z-index: 0;
   margin: 30px auto 30px;
   height: 30px;
-}
+} */
 
-
+/* 
 #rslts-cont{
   color: white;
-}
+} */
 
 
-footer {
+/* footer {
   height: 100px;
   font-size: 1.5em;
   text-align: right;
   margin-right: 20px;
-  color: #7e57c2
-}
+  color: #7e57c2;
+} */
