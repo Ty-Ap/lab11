@@ -1,10 +1,20 @@
-body {
+main{
+  color: rgb(174, 112, 231);
   background-color: rgb(49, 48, 48);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 
+h1{
+  font-weight: 600;
+  color: rgb(174, 112, 231);
+  background-color: rgb(49, 48, 48);
+  font-size: 200%;
+  text-indent: 35%;
+  padding:5%;
 
+}
 
 
 img {
@@ -15,7 +25,6 @@ img {
   width: 430px;
   border-style: solid;
   border-width: 4px;
-  border-image:#D52D00;
 }
 
 div{
@@ -36,10 +45,10 @@ div{
   height: 30px;
 } */
 
-/* 
-#rslts-cont{
-  color: white;
-} */
+
+#myChart{
+  background-color: rgba(116, 243, 222, 0.822);
+}
 
 
 /* footer {

@@ -42,7 +42,7 @@ Product.productArray = [];
 
 
 
-
+// random number function
 function randomIndex() {
   return Math.floor(Math.random() * productArray.length);
 }
@@ -50,6 +50,7 @@ function randomIndex() {
 
 let indexArray = [];
 
+// image file population
 function renderImg() {
 
   while (indexArray.length < 6) {
@@ -76,7 +77,7 @@ function renderImg() {
   productArray[imgThreeIndex].views++;
 }
 
-
+// handles voting clicks and calls graph after voting comcludes
 function handleClick(event) {
   let imgClicked = event.target.title;
 
@@ -97,6 +98,7 @@ function handleClick(event) {
   }
 }
 
+//graph function, uses chart.js external library.
 function renderChart() {
   let productNames = [];
   let productVotes = [];
@@ -149,10 +151,11 @@ function renderChart() {
 }
 
 
-
+//cache storage and retrieval
 let fetchedProducts = localStorage.getItem('products');
 let parsedProducts = JSON.parse(fetchedProducts);
 
+//using constructor to generate products and their img files
 let bagProduct = new Product('bag');
 let bananaProduct = new Product('banana');
 let bathroomProduct = new Product('bathroom');
@@ -173,7 +176,7 @@ let unicornProduct = new Product('unicorn');
 let waterCanProduct = new Product('water-can');
 let wineGlassProduct = new Product('wine-glass');
 
-
+//pushes products into initialized global variable array
 productArray.push(bagProduct, bananaProduct, bathroomProduct, bootsProduct, breakfastProduct, bubblegumProduct, chairProduct, cthulhuProduct, dogDuckProduct, dragonProduct, penProduct, petSweepProduct, scissorsProduct, sharkProduct, sweepBabyProduct, tauntaunProduct, unicornProduct, waterCanProduct, wineGlassProduct);
 
 
@@ -182,7 +185,7 @@ productArray.push(bagProduct, bananaProduct, bathroomProduct, bootsProduct, brea
 
 
 
-
+//if there are is a history in the cache, re-intigrate stored votes and views for each product.
 if (parsedProducts) {
   for (let i = 0; i < productArray.length; i++){
     productArray[i].votes = parsedProducts[i].votes;
@@ -190,22 +193,9 @@ if (parsedProducts) {
   }
 }
 
+
+//calling render function and click/handleclick
 renderImg();
 imgContainer.addEventListener('click', handleClick);
 
 
-// - allow voting on imgx1week
-// - get totals
-// - graph after
-// - also the percentage of times that an item was clicked when it was shown.
-// - custom font, color palette, layout with semantic HTML, and so on
-
-
-// vote/view * 100 = percent unsure of scope.
-
-
-// - allow voting on imgx1week
-// - get totals
-// - graph after
-// - also the percentage of times that an item was clicked when it was shown.
-// - custom font, color palette, layout with semantic HTML, and so on
